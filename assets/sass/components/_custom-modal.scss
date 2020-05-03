@@ -1,0 +1,66 @@
+.modal-dialog {
+    margin: 30px auto;
+    max-width: 79vw;
+}
+
+.modal-body {
+    position: relative;
+    padding: rem(40) rem(30);
+}
+
+.modal-content{
+    border: none;
+}
+
+.close {
+    position: absolute;
+    right: -30px;
+    top: 0;
+    z-index: 999;
+    font-size: 2rem;
+    font-weight: normal;
+    color: #fff;
+    opacity: 1;
+    text-shadow: none;
+
+    &:hover,
+    &:focus {
+        color: $white;
+        opacity: .8;
+    }
+}
+
+.modal-lost-img {
+    max-width: rem(120);
+}
+
+@include media-breakpoint-up(md) {
+    .modal-dialog {
+        max-width: rem(680);
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .modal-lost-img {
+        max-width: rem(100);
+    }
+
+    .modal {
+
+        .h1 {
+            font-size: rem(28);
+        }
+
+        .h3 {
+            font-size: rem(20);
+        }
+    }
+
+    .modal-dialog {
+        max-width: 90%;
+
+        button.close {
+            display: none;
+        }
+    }
+}

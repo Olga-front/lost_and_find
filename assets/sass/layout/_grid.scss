@@ -1,0 +1,6 @@
+@include media-breakpoint-up(md) {
+    .row-cols-md-3>* {
+        flex: 0 0 33.3%;
+        max-width: 33.3%;
+    }
+}

@@ -1,0 +1,198 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find'};
+	- var header_class = 'navbar-dark';
+block content_block
+
+	section.s-intro-home-wrap.text-white.p-0
+		.s-intro.s-intro-home.bg-primary
+			.container-fluid.s-intro-content.mw-md-1100
+				h1 Help, I lost my Teddy Bear
+				p.mb-0 Register your goods before you lose it.
+				p.d-flex.align-items-center.mb-5.mb-md-3.mb-xl-5
+					a.link-white-wrap.d-flex.align-items-center.video-btn(data-toggle="modal" data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-target="#howItWorksModal") #[span.link-inner.mr-3 Learn how it works] #[span.fa-play-wrap(href="#") #[i.fas.fa-play]]
+				.d-md-flex.justify-content-md-between
+					div.mb-4.mb-md-0
+						p I lost an item. Find in our database.
+						.form-inline
+							.autoComplete-wrap
+								input#lostItemsInput.form-control.autocomplete-input(type="text" tabindex="1" name="lost-items-autocomplete")
+							button.btn.btn-dark(type="submit") search
+					div
+						.ml-auto
+							p I’ve found a lost item. Report it!
+							.form-inline
+								input#foundLostItemsInput.form-control(type="text")
+								button.btn.btn-danger(type="submit") report
+				.s-intro-images
+					.s-intro-img.s-intro-img-phone
+						img(src="i/intro/phone.png" alt="Phone")
+					.s-intro-img.s-intro-img-wallet
+						img(src="i/intro/wallet.png" alt="Wallet")
+					span.s-intro-img-text.s-intro-img-wallet-text I ‘ve lost my wallet
+					span.s-intro-img-arrow.s-intro-img-wallet-arrow
+						+icon('arrow-1')
+					.s-intro-img.s-intro-img-glasses
+						img(src="i/intro/glasses.png" alt="Glasses")
+					.s-intro-img.s-intro-img-keys
+						img(src="i/intro/keys.png" alt="Keys")
+					.s-intro-img.s-intro-img-toy
+						img(src="i/intro/toy.png" alt="Keys")
+					span.s-intro-img-text.s-intro-img-toy-text where is my buddy?
+					span.s-intro-img-arrow.s-intro-img-toy-arrow
+						+icon('arrow-1')
+					.s-intro-img.s-intro-img-book
+						img(src="i/intro/book.png" alt="Book")
+					span.s-intro-img-text.s-intro-img-book-text I’ve found your book
+					span.s-intro-img-arrow.s-intro-img-book-arrow
+						+icon('arrow-2')
+					.s-intro-img.s-intro-img-flashcard
+						img(src="i/intro/flashcard.png" alt="Flashcard")
+					.s-intro-img.s-intro-img-camera
+						img(src="i/intro/camera.png" alt="Camera")
+					span.s-intro-img-text.s-intro-img-camera-text Is this yours?
+					span.s-intro-img-arrow.s-intro-img-camera-arrow
+						+icon('arrow-3')
+	section.p-0.bg-white
+		.container-fluid.mw-md-1130
+			.found-items-carousel(data-flickity='{ "autoPlay": true, "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+				.carousel-cell
+					.d-flex.align-items-start
+						img.mr-2(src="i/home/img-1.jpg" alt="Image description")
+						.text-sm AV-C1-06AV-C1-06 AV-C1-06 AV-C1-06AV-C1-06AV-C1-06 AV-C1-06 AV-C1-06 #[span.text-muted.pt-2 is found in] Amsterdam #[span.d-block.text-xs.text-muted 12 hours ago]
+				.carousel-cell
+					.d-flex.align-items-start
+						img.mr-2(src="i/home/img-1.jpg" alt="Image description")
+						.text-sm AV-C1-06 AV-C1- #[span.text-muted is found in] Amsterdam #[span.d-block.text-xs.text-muted 12 hours ago]
+				.carousel-cell
+					.d-flex.align-items-start
+						img.mr-2(src="i/home/img-1.jpg" alt="Image description")
+						.text-sm AV-C1-06 #[span.text-muted is found in] Amsterdam #[span.d-block.text-xs.text-muted 12 hours ago]
+				.carousel-cell
+					.d-flex.align-items-start
+						img.mr-2(src="i/home/img-1.jpg" alt="Image description")
+						.text-sm AV-C1-06 #[span.text-muted is found in] Amsterdam #[span.d-block.text-xs.text-muted 12 hours ago]
+				.carousel-cell
+					.d-flex.align-items-start
+						img.mr-2(src="i/home/img-1.jpg" alt="Image description")
+						.text-sm AV-C1-06 #[span.text-muted is found in] Amsterdam #[span.d-block.text-xs.text-muted 12 hours ago]
+				.carousel-cell
+					.d-flex.align-items-start
+						img.mr-2(src="i/home/img-1.jpg" alt="Image description")
+						.text-sm AV-C1-06 #[span.text-muted is found in] Amsterdam #[span.d-block.text-xs.text-muted 12 hours ago]
+	section.s-principles
+		.container-fluid.d-flex.flex-wrap.align-items-start.mw-md-1100
+			h1.mb-5.visible-max-sm How it works in&nbsp;just&nbsp;3&nbsp;steps
+			.tab-content.s-principles-tab-content.wow.slideInLeft(id="principlesContent")
+				h1.mb-5.hidden-sm How it works in&nbsp;just&nbsp;3&nbsp;steps
+				#createId.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="createIdTab")
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste eveniet quas accusamus aliquam exercitationem nemo voluptas et, voluptatum minima, saepe assumenda atque laboriosam, dolor deserunt. Ex nam soluta quasi molestias!
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste eveniet quas accusamus aliquam exercitationem nemo voluptas et, voluptatum minima, saepe assumenda atque laboriosam, dolor deserunt. Ex nam soluta quasi molestias!
+					a.btn.btn-dark.mt-3(href="#") register now
+					div
+						img(src="i/intro/book.png" alt="Book" class="s-principles-img-book")
+				#registerItems.fade.tab-pane(role="tabpanel" aria-labelledby="registerItemsTab")
+					p nihil maiores eum possimus nulla voluptatibus quam officia qui dicta? Modi ea inventore vitae totam! Provident dignissimos maiores fuga excepturi!
+				#printLabel.fade.tab-pane(role="tabpanel" aria-labelledby="printLabelTab")
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi labore, nihil maiores eum possimus nulla voluptatibus quam officia qui dicta? Modi ea inventore vitae totam! Provident dignissimos maiores fuga excepturi!
+			ol.nav.s-principles-nav.wow.slideInRight(role="tablist" aria-orientation="vertical")
+				li
+					a#createIdTab.nav-link.active(href="#createId" data-toggle="tab" role="tab" aria-selected="true" aria-controls="createId") Create an ID
+				li
+					a#registerItemsTab.nav-link(href="#registerItems" data-toggle="tab" role="tab" aria-selected="false" aria-controls="registerItems") Register your items
+				li
+					a#printLabelTab.nav-link(href="#printLabel" data-toggle="tab" role="tab" aria-selected="false" aria-controls="printLabel") Print your label 
+	section.s-partners.bg-white.wow.slideInUp
+		.container-fluid.mw-md-1100
+			h3 Our partners
+		.s-partners-carousel(data-flickity='{ "autoPlay": true, "prevNextButtons": false, "pageDots": false, "cellAlign": "center", "wrapAround": true }')
+			.carousel-cell
+				img(src="i/home/logo-pararius.png" alt="Pararius")
+			.carousel-cell
+				img(src="i/home/logo-endef.png" alt="endef")
+			.carousel-cell
+				img(src="i/home/logo-covers-jonker.png" alt="Covers&Jonker")
+			.carousel-cell
+				img(src="i/home/logo-efteling.png" alt="efteling")
+			.carousel-cell
+				img(src="i/home/logo-den-haag.png" alt="Den Haag")
+			.carousel-cell
+				img(src="i/home/logo-pararius.png" alt="Pararius")
+			.carousel-cell
+				img(src="i/home/logo-endef.png" alt="endef")
+			.carousel-cell
+				img(src="i/home/logo-covers-jonker.png" alt="Covers&Jonker")
+			.carousel-cell
+				img(src="i/home/logo-efteling.png" alt="efteling")
+			.carousel-cell
+				img(src="i/home/logo-den-haag.png" alt="Den Haag")
+	section.s-jarallax.p-0
+		.jarallax(data-jarallax data-speed="0.2")
+			img.jarallax-img(src="i/home/parallax-bg.jpg")
+			.container-fluid.wow.slideInUp.mw-md-1100
+				p.s-jarallax-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+				.s-jarallax-lost-item.wow.slideInRight
+					img(src="i/home/camera.png", alt="Camera")
+					span.s-jarallax-lost-item-description I’m looking for my owner
+					span.s-jarallax-lost-item-arrow
+						+icon('arrow-1')
+	section.bg-light.pt-5.pb-6-sm.wow.slideInUp
+		.container-fluid
+			.feedback-carousel(data-flickity='{ "prevNextButtons": false, "cellAlign": "center", "wrapAround": true }')
+				.carousel-cell
+					.star-rating
+						i.fas.fa-star.checked
+						i.fas.fa-star
+						i.fas.fa-star
+						i.fas.fa-star
+						i.fas.fa-star
+					blockquote
+						q “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”
+				.carousel-cell
+					.star-rating
+						i.fas.fa-star.checked
+						i.fas.fa-star.checked
+						i.fas.fa-star
+						i.fas.fa-star
+						i.fas.fa-star
+					blockquote
+						q “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”
+				.carousel-cell
+					.star-rating
+						i.fas.fa-star.checked
+						i.fas.fa-star.checked
+						i.fas.fa-star.checked
+						i.fas.fa-star
+						i.fas.fa-star
+					blockquote
+						q “Lorem ipsum dolor sit amet, ”
+	section.p-0
+		.d-flex.flex-wrap.text-img.img-right
+			.col-md-7.text-holder.wow.slideInLeft
+				h2 We can help each others
+				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam commodi molestias beatae facere. Perspiciatis atque ducimus placeat expedita recusandae iure vel, eius adipisci consequuntur, voluptas, soluta id sequi sint animi.
+				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam commodi molestias beatae facere. Perspiciatis atque ducimus placeat expedita recusandae iure vel, eius adipisci consequuntur, voluptas, soluta id sequi sint animi.
+				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam commodi molestias beatae facere. Perspiciatis atque ducimus placeat expedita recusandae iure vel, eius adipisci consequuntur, voluptas, soluta id sequi sint animi.
+				a.btn.btn-dark.mt-4(href="#") register now
+			.col-md-5.img-fit-cover-wrap.wow.slideInRight
+				.img-fit-cover
+					img(src="i/home/img-2.jpg", alt="Image description")
+	section.bg-light.p-0
+		.d-flex.flex-wrap.text-img.img-left
+			.col-md-5.img-fit-cover-wrap.wow.slideInLeft
+				.img-fit-cover
+					img(src="i/home/img-3.jpg", alt="Image description")
+			.col-md-7.text-holder.wow.slideInRight
+				h2 lostandfind.nl for companies
+				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam commodi molestias beatae facere. Perspiciatis atque ducimus placeat expedita recusandae iure vel, eius adipisci consequuntur, voluptas, soluta id sequi sint animi.
+				a.btn.btn-dark.mt-4(href="#") contact us now
+	.modal.fade(id="howItWorksModal" tabindex="-1" role="dialog" aria-hidden="true")
+		.modal-dialog(role="document")
+			.modal-content
+				button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+					span(aria-hidden="true") &times;
+				.embed-responsive.embed-responsive-16by9
+					iframe(class="embed-responsive-item" src="" allowscriptaccess="always" allow="autoplay")

@@ -1,0 +1,11 @@
+.feedback-carousel {
+    .carousel-cell {
+        width: 100%;
+        text-align: center;
+
+        blockquote {
+            max-width: rem(800);
+            margin: 0 auto rem(30);
+        }
+    }
+}

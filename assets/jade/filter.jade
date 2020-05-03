@@ -1,0 +1,288 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find', header_login: true};
+	- var header_class = 'navbar-dark bg-primary';
+block content_block
+
+	.container-fluid.pt-4.pt-md-5.pb-3
+		.row
+			aside.col-md-3.filter-area
+				.filter-area-head
+					h2.filter-area-title Filter items
+					span.filter-area-close.visible-max-sm
+				.filter-area-body
+					.filters-results
+						.filters-chosen-item
+							span Result 1
+							span.btn-remove
+						.filters-chosen-item
+							span Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+							span.btn-remove
+						.filters-chosen-item
+							span Result 3
+							span.btn-remove
+					.filters-group
+						h5 Filter 1
+						.filters-block
+							a.collapse-opener(data-toggle="collapse" href="#filtersBlock1" role="button" aria-expanded="true" aria-controls="filtersBlock1") Dropdown Filter #[i.fas.fa-caret-down.ml-2]
+							.collapse.show(id="filtersBlock1")
+								.collapse-inner
+									select.custom-select.custom-select-sm.mb-2
+										option(selected) Choose...
+										option(value="1") long text long text long text long text
+										option(value="1") Two
+										option(value="1") Three
+									select.custom-select.custom-select-sm
+										option(selected) Choose...
+										option(value="1") One
+										option(value="1") Two
+										option(value="1") Three
+						.filters-block
+							a.collapse-opener(data-toggle="collapse" href="#filtersBlock2" role="button" aria-expanded="true" aria-controls="filtersBlock2") Open Filter #[i.fas.fa-caret-down.ml-2]
+							.collapse.show(id="filtersBlock2")
+								.collapse-inner
+									.custom-control.custom-radio
+										input(type="radio" id="customRadio1" name="customRadio" class="custom-control-input")
+										label.custom-control-label(for="customRadio1") 1+
+									.custom-control.custom-radio
+										input(type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked)
+										label.custom-control-label(for="customRadio2") 2+
+									.custom-control.custom-radio
+										input(type="radio" id="customRadio3" name="customRadio" class="custom-control-input")
+										label.custom-control-label(for="customRadio3") 3+
+									.custom-control.custom-radio
+										input(type="radio" id="customRadio4" name="customRadio" class="custom-control-input")
+										label.custom-control-label(for="customRadio4") 4+
+									.custom-control.custom-radio
+										input(type="radio" id="customRadio5" name="customRadio" class="custom-control-input")
+										label.custom-control-label(for="customRadio5") 5+
+						.filters-block
+							a.collapse-opener(data-toggle="collapse" href="#filtersBlock3" role="button" aria-expanded="true" aria-controls="filtersBlock3") Open Filter #[i.fas.fa-caret-down.ml-2]
+							.collapse.show(id="filtersBlock3")
+								.collapse-inner
+									.custom-control.custom-checkbox
+										input(type="checkbox" id="customCheckbox1" class="custom-control-input")
+										label.custom-control-label(for="customCheckbox1") Chk1
+									.custom-control.custom-checkbox
+										input(type="checkbox" id="customCheckbox2" class="custom-control-input" checked)
+										label.custom-control-label(for="customCheckbox2") Chk2
+									.custom-control.custom-checkbox
+										input(type="checkbox" id="customCheckbox3" class="custom-control-input" checked)
+										label.custom-control-label(for="customCheckbox3") Chk3
+					h5 Filter 2
+					.filters-block
+						a.collapse-opener(data-toggle="collapse" href="#filtersBlock4" role="button" aria-expanded="true" aria-controls="filtersBlock1") Dropdown Filter #[i.fas.fa-caret-down.ml-2]
+						.collapse.show(id="filtersBlock4")
+							.collapse-inner
+								select.custom-select.custom-select-sm.mb-2
+									option(selected) Choose...
+									option(value="1") One
+									option(value="1") Two
+									option(value="1") Three
+			.col-md-9
+				.filters-row.d-flex.flex-wrap.flex-md-nowrap.justify-content-between.text-sm.pb-4
+					nav.nav.flex-nowrap.hidden-sm(role="tablist")
+						a.nav-item.nav-link.active.nav-icon-wrap(id="items-block-tab" data-toggle="tab" href="#items-block" role="tab" aria-controls="items-block" aria-selected="true")
+							i.fas.fa-th
+						a.nav-item.nav-link.nav-icon-wrap(id="items-list-tab" data-toggle="tab" href="#items-list" role="tab" aria-controls="items-list" aria-selected="false")
+							i.fas.fa-list-ul
+					form.form-inline
+						.form-group
+							label.mr-2(for="inlineFormCustomSelect1") Lorem ipsum dolor
+							select.custom-select.custom-select-sm.mr-md-4(id="inlineFormCustomSelect1")
+								option(selected) Choose...
+								option(value="1") One
+								option(value="1") Two
+								option(value="1") Lorem ipsum dolor Lorem ipsum dolor
+						.form-group
+							label.mr-2(for="inlineFormCustomSelect2") Soort Drop2
+							select.custom-select.custom-select-sm(id="inlineFormCustomSelect2")
+								option(selected) Choose...
+								option(value="1") One
+								option(value="1") Lorem ipsum dolor Lorem ipsum dolor
+								option(value="1") Three
+				.tab-content
+					.tab-pane.fade.show.active#items-block(role="tabpanel" aria-labelledby="items-block-tab")
+						.row
+							.col-lg-4.col-md-6
+								.card
+									.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+										.carousel-cell
+											img(src="i/item-detail/img-1.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/home/img-2.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/home/img-3.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/form-page/intro-bg.jpg", alt="Image description")
+									.card-body
+										.card-label AB-CD-EF-01
+										h5.card-title iPhone 11 with blue soft cover
+										p.text-muted.text-sm Lost 2 days ago, somewhere
+										.card-hover
+											button(type="button" class="btn btn-danger mb-md-3" data-toggle="modal" data-target="#lostItemModal") i've found this
+											button(type="button" class="btn btn-primary") see more details
+							.col-lg-4.col-md-6
+								.card
+									.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+										.carousel-cell
+											img(src="i/home/img-2.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/home/img-3.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/form-page/intro-bg.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/item-detail/img-1.jpg", alt="Image description")
+									.card-body
+										.card-label AB-CD-EF-01
+										h5.card-title iPhone 11 with blue soft cover
+										p.text-muted.text-sm Lost 2 days ago, somewhere
+										.card-hover
+											button(type="button" class="btn btn-danger mb-md-3" data-toggle="modal" data-target="#lostItemModal") i've found this
+											button(type="button" class="btn btn-primary") see more details
+							.col-lg-4.col-md-6
+								.card
+									.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+										.carousel-cell
+											img(src="i/home/img-3.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/form-page/intro-bg.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/item-detail/img-1.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/home/img-2.jpg", alt="Image description")
+									.card-body
+										.card-label AB-CD-EF-01
+										h5.card-title iPhone 11 with blue soft cover
+										p.text-muted.text-sm Lost 2 days ago, somewhere
+										.card-hover
+											button(type="button" class="btn btn-danger mb-md-3" data-toggle="modal" data-target="#lostItemModal") i've found this
+											button(type="button" class="btn btn-primary") see more details
+							.col-lg-4.col-md-6
+								.card
+									.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+										.carousel-cell
+											img(src="i/form-page/intro-bg.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/item-detail/img-1.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/home/img-2.jpg", alt="Image description")
+										.carousel-cell
+											img(src="i/home/img-3.jpg", alt="Image description")
+									.card-body
+										.card-label AB-CD-EF-01
+										h5.card-title iPhone 11 with blue soft cover
+										p.text-muted.text-sm Lost 2 days ago, somewhere
+										.card-hover
+											button(type="button" class="btn btn-danger mb-md-3" data-toggle="modal" data-target="#lostItemModal") i've found this
+											button(type="button" class="btn btn-primary") see more details
+					.tab-pane.fade#items-list(role="tabpanel" aria-labelledby="items-list-tab")
+						.card.card-inline
+							.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+								.carousel-cell
+									img(src="i/item-detail/img-1.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/home/img-2.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/home/img-3.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/form-page/intro-bg.jpg", alt="Image description")
+							.card-body
+								.card-label AB-CD-EF-01
+								.card-hover
+									button(type="button" class="btn btn-danger mr-md-2 mb-2 mb-md-0" data-toggle="modal" data-target="#lostItemModal") i've found this
+									button(type="button" class="btn btn-primary") see more details
+								h5.card-title iPhone 11 with blue soft cover
+								.card-text
+									p.text-muted.text-sm Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam voluptas, iste ea illum quis alias sapiente laborum atque doloribus sunt dolores placeat quasi recusandae accusamus! Alias expedita unde aperiam sapiente.
+									p.text-muted.text-sm Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam voluptas, iste ea illum quis alias sapiente laborum atque doloribus sunt dolores placeat quasi recusandae accusamus! Alias expedita unde aperiam sapiente.
+						.card.card-inline
+							.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+								.carousel-cell
+									img(src="i/home/img-2.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/home/img-3.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/form-page/intro-bg.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/item-detail/img-1.jpg", alt="Image description")
+							.card-body
+								.card-label AB-CD-EF-01
+								.card-hover
+									button(type="button" class="btn btn-danger mr-md-2 mb-2 mb-md-0" data-toggle="modal" data-target="#lostItemModal") i've found this
+									button(type="button" class="btn btn-primary") see more details
+								h5.card-title iPhone 11 with blue soft cover
+								.card-text
+									p.text-muted.text-sm Lost 2 days ago, somewhere
+						.card.card-inline
+							.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+								.carousel-cell
+									img(src="i/home/img-3.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/form-page/intro-bg.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/item-detail/img-1.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/home/img-2.jpg", alt="Image description")
+							.card-body
+								.card-label AB-CD-EF-01
+								.card-hover
+									button(type="button" class="btn btn-danger mr-md-2 mb-2 mb-md-0" data-toggle="modal" data-target="#lostItemModal") i've found this
+									button(type="button" class="btn btn-primary") see more details
+								h5.card-title iPhone 11 with blue soft cover
+								.card-text
+									p.text-muted.text-sm Lost 2 days ago, somewhere
+						.card.card-inline
+							.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+								.carousel-cell
+									img(src="i/form-page/intro-bg.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/item-detail/img-1.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/home/img-2.jpg", alt="Image description")
+								.carousel-cell
+									img(src="i/home/img-3.jpg", alt="Image description")
+							.card-body
+								.card-label AB-CD-EF-01
+								.card-hover
+									button(type="button" class="btn btn-danger mr-md-2 mb-2 mb-md-0" data-toggle="modal" data-target="#lostItemModal") i've found this
+									button(type="button" class="btn btn-primary") see more details
+								h5.card-title iPhone 11 with blue soft cover
+								.card-text
+									p.text-muted.text-sm Lost 2 days ago, somewhere
+				nav
+					ul.pagination.pagination-sm
+						li.page-item.disabled
+							a.page-link(href="#" tabindex="-1" aria-disabled="true") First
+						li.page-item.active
+							a.page-link(href="#") 1
+						li.page-item
+							a.page-link(href="#") 2
+						li.page-item
+							a.page-link(href="#") 3
+						li.page-item
+							a.page-link(href="#") 4
+						li.page-item
+							a.page-link(href="#") 5
+						li.page-item
+							a.page-link(href="#") 6
+						li.page-item
+							a.page-link(href="#") 7
+						li.page-item
+							a.page-link(href="#") Last
+	.modal.fade(id="lostItemModal" tabindex="-1" role="dialog" aria-hidden="true")
+		.modal-dialog(role="document")
+			.modal-content
+				.modal-body.text-center
+					button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+						span(aria-hidden="true") &times;
+					img.modal-lost-img.mb-4(src="i/item-detail/img-1.jpg", alt="Image description")
+					p.h3.text-muted.mb-2 Is this item losing?
+					p.h1 AB-CD-EF-01
+					button#reportLostItemBtn(type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close") report
+	a.filters-open-modal.btn.btn-primary.visible-max-sm.btn-lg
+		i.fas.fa-sliders-h.mr-2
+		span Filter

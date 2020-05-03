@@ -1,0 +1,34 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find', header_login: true};
+	- var header_class = 'navbar-light'
+block content_block
+
+	.container-fluid.mw-md-1100
+		section.no-bg
+			.row
+				.col-md-4.wow.slideInLeft
+					h2 Print your label
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+				.col-md-8.wow.slideInRight
+					p.mb-5 Sign up for the Deployment Matters partner to discover the extensive line of benefits
+					form.needs-validation(novalidate)
+						.custom-control.custom-radio.mb-4
+							input(type="radio" id="standardLabel" name="label" class="custom-control-input" required)
+							label.custom-control-label(for="standardLabel")
+								p.mb-1 Standard - 4 cm x 1,2 cm
+								img(src="i/print-labels/label-standard.png", alt="Image description" width="362" height="110")
+						.custom-control.custom-radio.mb-4
+							input(type="radio" id="bigLabel" name="label" class="custom-control-input" required)
+							label.custom-control-label(for="bigLabel")
+								p.mb-1 Big - 8 cm x 2,4 cm
+								img(src="i/print-labels/label-big.png", alt="Image description" width="395" height="157")
+						.custom-control.custom-radio.mb-5
+							input(type="radio" id="miniLabel" name="label" class="custom-control-input" required)
+							label.custom-control-label(for="miniLabel")
+								p.mb-1 Mini - 2 cm x 0,8 cm
+								img(src="i/print-labels/label-mini.png", alt="Image description" width="267" height="82")
+						button(type="submit" class="btn btn-dark ml-radio") print the label

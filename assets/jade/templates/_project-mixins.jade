@@ -1,0 +1,122 @@
+mixin header
+	nav#header.navbar.navbar-expand-md.fixed-top(class=header_class)
+		.container-fluid
+			.navbar-top-area
+				a.navbar-brand(href="/")
+					+icon("logo")
+				ul.admin-links.visible-max-sm
+					if array.header_login
+						li #[a(href="#") Log out]
+					else
+						li #[a(href="#") Login]/
+						li #[a(href="#") Register]
+				button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation")
+					span.navbar-toggler-icon
+			#navbarToggler.collapse.navbar-collapse
+				.pt-4.pt-sm-0.w-100
+					.admin-bar.w-100
+						if array.header_login
+							.dropdown.profile-dropdown.mr-sm-4
+								a#dropdownProfileButton.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+									img.profile-dropdown-avatar(src="i/home/img-3.jpg", alt="Image description")
+									span Hi, Surya Handayana Handayana
+								.dropdown-menu.nav-dropdown-menu.animate.slideIn(aria-labelledby="dropdownProfileButton")
+									.container-fluid.nav-dropdown-container
+										a.nav-dropdown-item(href="#") lorem lorem 
+										a.nav-dropdown-item(href="#") one two three
+							p.mb-2.mb-sm-0.mr-sm-4
+								a Help
+						ul.admin-links.hidden-sm
+							if array.header_login
+								li #[a(href="#") Log out]
+							else
+								li #[a(href="#") Login]/
+								li #[a(href="#") Register]
+						.lang-dropdown.ml-sm-4
+							a#dropdownLangButton(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+								span.mr-2 English
+								img(src="i/uk-flag.svg" width="16" height="11" alt="Uk flag")
+							.dropdown-menu.dropdown-menu-sm-right(aria-labelledby="dropdownLangButton")
+								a.dropdown-item(href="#")
+									span.mr-2 English
+									img(src="i/uk-flag.svg" width="16" height="11" alt="Uk flag")
+								a.dropdown-item(href="#")
+									span.mr-2 English
+									img(src="i/uk-flag.svg" width="16" height="11" alt="Uk flag")
+					ul.nav.justify-content-start.justify-content-sm-end
+						li.nav-item.dropdown
+							a.nav-link.dropdown-toggle(id="navbarDropdownPartners" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+								span Partners
+							.dropdown-menu.nav-dropdown-menu.animate.slideIn(aria-labelledby="navbarDropdownPartners")
+								.container-fluid.nav-dropdown-container
+									a.nav-dropdown-item(href="#") Health & Safety
+									a.nav-dropdown-item(href="#") Sustainability
+									a.nav-dropdown-item(href="#") Digitalisation
+									a.nav-dropdown-item(href="#") Maintance
+									a.nav-dropdown-item(href="#") Logitics
+									a.nav-dropdown-item(href="#") Utilities
+									a.nav-dropdown-item(href="#") See All Catergories
+						li.nav-item.dropdown
+							a.nav-link.dropdown-toggle(id="navbarDropdownOurSolutions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+								span Our Solutions
+							.dropdown-menu.nav-dropdown-menu.animate.slideIn(aria-labelledby="navbarDropdownOurSolutions")
+								.container-fluid.nav-dropdown-container
+									a.nav-dropdown-item(href="#") Lorem impsum
+									a.nav-dropdown-item(href="#") Sustainability
+									a.nav-dropdown-item(href="#") Digitalisation
+									a.nav-dropdown-item(href="#") See All Catergories
+						li.nav-item
+							a.nav-link(href="#") How it works
+
+mixin footer
+	footer.footer.pb-5.wow.slideInUp
+		.border-bottom.pt-5.pb-5
+			.container-fluid
+				.row
+					.col-md-3.col-sm-6.mb-4.mb-md-0
+						h5.font-weight-bold Services
+						ul.footer-list
+							li
+								a(href="#") Consultancy
+							li
+								a(href="#") Solutions
+							li
+								a(href="#") Supports
+					.col-md-3.col-sm-6.mb-4.mb-md-0
+						h5.font-weight-bold For Business
+					.col-md-3.col-sm-6.mb-4.mb-md-0
+						h5.font-weight-bold Company
+						ul.footer-list
+							li
+								a(href="#") Our story
+							li
+								a(href="#") News
+							li
+								a(href="#") Contacts
+					.col-md-3.col-sm-6.mb-4.mb-md-0
+						h5.font-weight-bold Information
+						ul.footer-list
+							li
+								a(href="#") News
+							li
+								a(href="#") Blogs
+		.container-fluid.pt-5
+			.row.pb-5
+				.col-md-9.col-sm-6.mb-4.mb-md-0
+					h5.font-weight-bold Office Location
+					address #[span.d-block.mb-2 Nieuwegracht 26] #[span.d-block.mb-2 3512 LS Utrecht] #[span.d-block The Netherlands]
+				.col-md-3.col-sm-6
+					h5.font-weight-bold LostAndFind BV.
+					p.mb-2
+						a.link-body-color-wrap.d-flex.align-items-center.b-none(href="mailto:info@lostandfind.com")
+							i.far.fa-envelope.mr-2
+							span.link-inner info@lostandfind.com
+					p.mb-2
+						a.link-body-color-wrap.d-flex.align-items-center.b-none(href="#")
+							i.fab.fa-linkedin-in.mr-2
+							span.link-inner Find us on Linkedin
+					p.mb-2
+						a(href="#") General Terms and Conditions
+					p.mb-2
+						a(href="#") Privacy Disclaimer
+			p.small Copyright © LostAndFind B.V.

@@ -1,0 +1,55 @@
+a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.link-inner {
+    transition: .3s ease all;
+}
+
+.link-white-wrap {
+
+    &:hover,
+    &:focus {
+        .link-inner {
+            color: $white;
+            border-bottom-color: $white;
+        }
+    }
+
+    .link-inner {
+        @include link-color($white, $white, solid);
+    }
+}
+
+.link-body-color-wrap {
+    color: $body-color;
+
+    &:hover,
+    &:focus {
+        color: $primary;
+
+        .link-inner {
+            color: $primary;
+            border-bottom-color: $body-color;
+        }
+    }
+
+    .link-inner {
+        @include link-color($body-color, $primary, solid);
+    }
+
+    &.b-none {
+        .link-inner {
+            border: none;
+        }
+    }
+}
+
+.link-body-color {
+    @include link-color($body-color, $primary, solid);
+}

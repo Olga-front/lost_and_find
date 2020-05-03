@@ -1,0 +1,9 @@
+.btn {
+    text-transform: uppercase;
+    letter-spacing: rem(1);
+    font-weight: 600;
+
+    &.ml-radio{
+        margin-left: rem(30);
+    }
+}

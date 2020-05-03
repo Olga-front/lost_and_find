@@ -1,0 +1,76 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find'};
+	- var header_class = 'navbar-dark';
+block content_block
+
+	section.s-intro.text-white.bg-primary.p-0
+		.container-fluid.s-intro-content.mw-md-1100
+			.row
+				.col-md-6.pb-4.pb-md-0
+					nav(aria-label="breadcrumb")
+						ol.breadcrumb
+							li.breadcrumb-item
+								a(href="#") Home
+							li.breadcrumb-item
+								a(href="#") My Items
+							li.breadcrumb-item.active(aria-current="page") AB-CD-EF-01
+					h1 AB-CD-EF-01
+					p.mb-4 Name: Red Wallet Sicrid. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+					div
+						#lostItemChkWrap.custom-control.custom-checkbox.lost-item-modal-opener
+							input(type="checkbox" class="custom-control-input")
+							label.custom-control-label.text-sm(for="lostItemChk") I’ve lost this item :(
+					.share-area.pt-4.pt-md-5
+						h4 Share
+						ul.social-list
+							li
+								a(href="#")
+									i.fab.fa-instagram
+							li
+								a(href="#")
+									i.fab.fa-twitter
+							li
+								a(href="#")
+									i.fab.fa-facebook-square
+				.col-md-6
+					.item-detail-carousel-wrap.m-auto
+						.item-detail-carousel(data-flickity='{ "prevNextButtons": false, "pageDots": false, "cellAlign": "left", "wrapAround": true }')
+							.carousel-cell(href="i/item-detail/img-1.jpg" data-fancybox="intro-gallery" data-caption="Caption #1")
+								img(src="i/item-detail/img-1.jpg", alt="Image description")
+							.carousel-cell(href="i/home/img-2.jpg" data-fancybox="intro-gallery" data-caption="Caption #2")
+								img(src="i/home/img-2.jpg", alt="Image description")
+							.carousel-cell(href="i/home/img-3.jpg" data-fancybox="intro-gallery" data-caption="Caption #3")
+								img(src="i/home/img-3.jpg", alt="Image description")
+							.carousel-cell(href="i/form-page/intro-bg.jpg" data-fancybox="intro-gallery" data-caption="Caption #4")
+								img(src="i/form-page/intro-bg.jpg", alt="Image description")
+						span.item-detail-carousel-status 
+	.container-fluid.mw-md-1100
+		section.wow.slideInUp
+			h2 Image Gallery
+			.row.row-cols-1.row-cols-sm-2.row-cols-md-3
+				.col.mb-4
+					a(href="i/home/img-2.jpg" data-fancybox="gallery" data-caption="Caption #1")
+						img(src="i/home/img-2.jpg", alt="Image description")
+				.col.mb-4
+					a(href="i/home/img-3.jpg" data-fancybox="gallery" data-caption="Caption #2")
+						img(src="i/home/img-3.jpg", alt="Image description")
+				.col.mb-4
+					a(href="i/item-detail/img-1.jpg" data-fancybox="gallery" data-caption="Caption #3")
+						img(src="i/item-detail/img-1-thumb.jpg", alt="Image description")
+				.col.mb-4
+					a(href="i/form-page/intro-bg.jpg" data-fancybox="gallery" data-caption="Caption #4")
+						img(src="i/form-page/intro-bg.jpg", alt="Image description")
+	.modal.fade(id="lostItemModal" tabindex="-1" role="dialog" aria-hidden="true")
+		.modal-dialog(role="document")
+			.modal-content
+				.modal-body.text-center
+					button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+						span(aria-hidden="true") &times;
+					img.modal-lost-img.mb-4(src="i/item-detail/img-1.jpg", alt="Image description")
+					p.h3.text-muted.mb-2 Is this item losing?
+					p.h1 AB-CD-EF-01
+					button#reportLostItemBtn(type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close") report

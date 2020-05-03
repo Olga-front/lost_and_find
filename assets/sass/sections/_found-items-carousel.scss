@@ -1,0 +1,43 @@
+.found-items-carousel {
+    padding: rem(27) 0;
+    overflow: hidden;
+
+    .carousel-cell {
+        width: 25%;
+        padding: 0 rem(15);
+        border-right: 1px solid $gray-400;
+    }
+
+    &.flickity-enabled.is-draggable {
+        .carousel-cell {
+            min-height: 100%;
+        }
+
+        .flickity-viewport{
+            margin-right: -1px;
+        }
+    }
+
+    .flickity-slider {
+        display: flex;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .found-items-carousel {
+    
+        .carousel-cell {
+            width: 50%;
+        }
+    }
+}
+
+@include media-breakpoint-down(xs) {
+    .found-items-carousel {
+    
+        .carousel-cell {
+            width: 100%;
+            border: none;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find'};
+	- var header_class = 'navbar-light';
+block content_block
+
+	section
+		.container-fluid
+			h1 Sitemap
+			ol
+				li
+					a(href="home.html") Home
+				li
+					a(href="registration.html") Registration
+				li
+					a(href="registration-header-login.html") Registration with header after log in
+				li
+					a(href="form-page.html") Laf form
+				li
+					a(href="print.html") Print your label
+				li
+					a(href="item-detail.html") Item detail
+				li
+					a(href="filter.html") Filter page

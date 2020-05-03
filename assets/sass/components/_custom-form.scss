@@ -1,0 +1,233 @@
+.form-inline {
+    flex-flow: row nowrap;
+}
+
+.custom-control {
+    padding-left: rem(30);
+}
+
+.custom-control-label {
+
+    &:before,
+    &:after {
+        left: rem(-30);
+    }
+}
+
+.form-group {
+    position: relative;
+
+    &.label-absolute-wrap {
+        margin-bottom: rem(40);
+    }
+
+    &.focused {
+        label {
+            top: rem(-10);
+            font-size: rem(14);
+        }
+    }
+}
+
+.form-control-border-botttom {
+    border-color: $gray-600;
+    border-width: 0 0 1px;
+    padding-right: 0;
+    padding-left: 0;
+
+    &:focus {
+        box-shadow: none;
+        border-bottom-color: $primary;
+
+        &+label {
+            top: rem(-10);
+            font-size: rem(14);
+        }
+    }
+}
+
+.was-validated .form-control-border-botttom:valid:focus,
+.form-control-border-botttom.is-valid:focus,
+.was-validated .form-control-border-botttom:invalid:focus,
+.form-control-border-botttom.is-invalid:focus {
+    box-shadow: none;
+}
+
+.label-absolute {
+    transition: .3s ease all;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.custom-img-file {
+    position: relative;
+}
+
+.custom-img-file-label {
+    margin-bottom: 0;
+    transition: .3s ease all;
+    text-indent: 0;
+    border: 1px solid $dark;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: rem(35);
+    padding-top: rem(6);
+    padding-bottom: rem(6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+
+    &:hover {
+        background-color: $dark;
+        color: $white;
+    }
+}
+
+.bg-primary {
+    .custom-control-input:checked~.custom-control-label::before {
+        border-color: $white;
+    }
+}
+
+.image-thumb {
+    max-height: rem(85);
+    border: 1px solid $dark;
+    cursor: pointer;
+}
+
+.pip {
+    display: inline-block;
+    margin: rem(10) rem(10) 0 0;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        .remove {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .remove {
+        transition: .3s ease all;
+        background-color: rgba($dark, 0.4);
+        color: $danger;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        left: 0;
+        height: 100%;
+        font-size: rem(22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+}
+
+.custom-select {
+    max-width: rem(180);
+}
+
+.filters-row {
+    label {
+        max-width: rem(160);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .form-inline {
+        .form-control {
+            width: rem(271);
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .form-inline {
+        .form-control {
+            width: 100%;
+        }
+
+        .autoComplete-wrap {
+            width: 100%;
+        }
+    }
+
+    .filters-row {
+        .custom-select {
+            max-width: rem(120);
+        }
+
+        label {
+            max-width: rem(80);
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .filters-row {
+        label {
+            display: block;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+
+    .custom-file {
+        padding-top: rem(38);
+        height: rem(75);
+
+        .fa-paperclip {
+            top: rem(45);
+        }
+    }
+
+    .custom-file-label {
+
+        span {
+            padding: rem(38) 0 0 rem(13);
+            width: 100%;
+        }
+
+        &:after {
+            left: 0;
+            right: auto;
+            height: rem(38);
+        }
+    }
+
+    .filters-row {
+        .form-inline {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .custom-select {
+            max-width: none;
+        }
+
+        label {
+            max-width: none;
+            margin-bottom: 0;
+            justify-content: flex-start;
+        }
+    }
+}

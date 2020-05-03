@@ -1,0 +1,12 @@
+.icon {
+	display: inline-block;
+	vertical-align: top;
+	fill: currentColor;
+}
+
+{{#shapes}}
+.icon-{{base}} {
+	width:rem({{width.inner}});
+	height:rem({{height.inner}});
+}
+{{/shapes}}

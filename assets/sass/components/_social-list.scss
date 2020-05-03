@@ -1,0 +1,23 @@
+.social-list{
+    @include reset-ul;
+    display: flex;
+    align-items: center;
+    font-size: rem(26);
+
+    i {
+        vertical-align: top;
+    }
+
+    li {
+        margin-right: rem(22);
+    }
+
+    a {
+        color: #a5c0de;
+
+        &:hover,
+        &:focus {
+            color: $white;
+        }
+    }
+}

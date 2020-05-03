@@ -1,0 +1,24 @@
+.footer-list {
+    @include reset-ul;
+
+    li {
+        margin-bottom: rem(11);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.footer {
+    font-size: rem(14);
+
+    a {
+        color: $body-color;
+
+        &:hover,
+        &:focus {
+            color: $primary;
+        }
+    }
+}

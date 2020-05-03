@@ -1,0 +1,16 @@
+.nav-icon-wrap {
+    padding: 0;
+    font-size: rem(24);
+    margin-right: rem(30);
+    color: $gray-600;
+
+    &.active {
+        color: $link-color;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .nav-icon-wrap {
+        margin-right: rem(15);
+    }
+}

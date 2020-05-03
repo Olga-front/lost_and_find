@@ -1,0 +1,9 @@
+@include media-breakpoint-up(lg) {
+    .mw-md-1100 {
+        max-width: rem(1100) !important;
+    }
+
+    .mw-md-1130 {
+        max-width: rem(1130) !important;
+    }
+}

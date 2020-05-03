@@ -1,0 +1,54 @@
+// variables,mixins,extends
+@import "helpers/helpers_all";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "fonts";
+
+@import "base-reset";
+
+// icons
+@import "sprite";
+
+// content
+@import "content/custom-headings";
+@import "content/custom-links";
+@import "content/custom-typography";
+@import "content/custom-display";
+@import "content/sizing";
+
+// plugins
+@import "plugins/flickity";
+@import "plugins/flickity-custom";
+@import "plugins/autocomplete-custom";
+@import "plugins/parallax";
+@import "plugins/fancybox-custom";
+@import "plugins/custom-tabs";
+
+// components
+@import "components/custom-navbar";
+@import "components/custom-dropdown";
+@import "components/custom-buttons";
+@import "components/custom-form";
+@import "components/star-rating";
+@import "components/custom-modal";
+@import "components/loader";
+@import "components/custom-breadcrumbs";
+@import "components/social-list";
+@import "components/custom-card";
+@import "components/custom-pagination";
+@import "components/filters-sidebar";
+
+// layout parts
+@import "layout";
+@import "layout/grid";
+@import "layout/footer";
+
+// sections
+@import "sections/section-common";
+@import "sections/intro";
+@import "sections/item-intro";
+@import "sections/found-items-carousel";
+@import "sections/home-principles";
+@import "sections/home-partners";
+@import "sections/home-jarallax-text-section";
+@import "sections/feedback-carousel";
+@import "sections/text-img";

@@ -1,0 +1,26 @@
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+- var array = '';
+block vars
+doctype
+html(lang="en")
+	block link
+	head
+		+head(array)
+	body
+		.wrapper(class=array.wrapper_class)
+			+header
+			main.main(role="main")
+				block content_block
+			+footer
+			.loader
+				.loader-inner.text-center
+					a.loader-logo(href="#")
+						+icon("logo-short")
+					p lost and finding if loading
+					p.text-sm.font-weight-bold.text-uppercase.mb-4 92 items are found in the last hour
+					.spinner
+						.double-bounce1
+						.double-bounce2
+		+scripts

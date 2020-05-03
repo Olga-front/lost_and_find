@@ -1,0 +1,320 @@
+mixin head(array)
+	meta(charset='UTF-8')
+	title!=array.title_inner
+	meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+	meta(name="apple-mobile-web-app-capable" content="yes")
+	meta(name="mobile-web-app-capable" content="yes")
+	if production
+		meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+		meta(name="format-detection", content="telephone=no")
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css")
+	link(rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css")
+	link(rel="stylesheet" networks="all" href="styles/main_global.css")
+
+mixin scripts
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-3.4.1.min.js"><\/script>')</script>
+	<script src="https://kit.fontawesome.com/33690edbf8.js" crossorigin="anonymous"></script>
+
+	script(src="js/all.js")
+	script(src='js/main.js')
+	
+
+mixin loop-while(counter)
+	- i=0;
+	while i < counter
+		-i++;
+		block
+
+mixin loop-while-sub(counter)
+	- j = 0;
+		while j < counter
+			-j++;
+			block
+
+mixin icon(name,mod)
+	- mod = mod || ''
+	svg(class="icon icon-" + name + ' ' + mod)
+		use(xlink:href="i/sprite/sprite.svg#" + name)
+
+mixin multicolor-icon(name,mod)
+	- mod = mod || ''
+	svg(class="icon icon-" + name + ' ' + mod)
+		use(xlink:href="i/multicolor-sprite/multicolor-sprite.svg#" + name)
+
+mixin pagination
+	nav(aria-label="Page navigation" class="pagination-wrap")
+		ul.pagination
+			li.pagination__prev
+				a.pagination__prev-link._disabled(href="#")
+					+icon('arrow-left')
+			li.pagination__item
+				a.pagination__link._current(href="#") 1
+			li.pagination__item
+				a.pagination__link(href="#") 2
+			li.pagination__item
+				a.pagination__link(href="#") 3
+			li.pagination__item
+				a.pagination__link(href="#") 4
+			li.pagination__item
+				a.pagination__link(href="#") 5
+			li.pagination__next
+				a.pagination__next-link(href="#")
+					+icon('arrow-right')
+
+mixin doctor_item
+	a.doctor-item(href="#")
+		.doctor-item__text
+			h3.doctor_item__title Вачнадзе Александр Юрьевич
+			p Стоматолог-хирург, имплантолог
+			p Опыт работы 10 лет
+			.doctor-item__reviews
+				+icon('reviews')
+				span 16 отзывов
+			.doctor-item__btn-wrap.tablet-visible
+				.btn._primary-outline(href="#") Подробнее о враче
+		.doctor-item__img
+			img(src="i/team/img-7.png" srcset="i/team/img-7@2x.png 2x" alt="Image description")
+
+mixin form-panel-inline
+	form.needs-validation.form-inline(novalidate role="form")
+		.input-holder.form-inline__input-holder
+			input.form-control.phoneinput(type="text" required="required" inputmode="tel" placeholder="+7")
+		button.btn._primary.form__btn(type="submit")
+			span.btn__text #[span.mobile-hidden Перезвоните мне] #[span.mobile-visible Записаться]
+		p.form-text-agreement.c-grey.form-inline__form-text-agreement Нажимая кнопку «#[span.mobile-hidden Перезвоните мне]#[span.mobile-visible Записаться]» вы даёте #[a._grey(href="#") согласие на обработку своих данных]
+		.phone-note.form-panel__phone-note.form-inline__phone-note
+			p.text-sm.mb-0.c-grey Или позвоните нам:
+			a.tel-link(href="tel:+74951910824") +7 495 191-08-24
+
+mixin team-member
+	picture.team-member__img
+		source(data-srcset="i/team/img-1-thumb.webp 1x, i/team/img-1-thumb@2x.webp 2x" type="image/webp")
+		source(data-srcset="i/team/img-1-thumb.png 1x, i/team/img-1-thumb@2x.png 2x" type="image/png")
+		img.lazyload(data-src="i/team/img-1-thumb.png" alt="Team image")
+	.team-member__text
+		h4.team-member__title Баскова Анастасия Вадимовна
+		p.text-sm Стоматолог-хирург, имплантолог, К.М.Н.
+		p.text-sm.c-grey Опыт работы 11 лет
+
+mixin article-item
+	.publication-item
+		a(href="#").publication-item__img._min-sm-order-last
+			picture._rounded
+				source(data-srcset="i/articles/img-1.webp 1x, i/articles/img-1@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/articles/img-1.jpg 1x, i/articles/img-1@2x.jpg 2x" type="image/jpg")
+				img.lazyload(data-src="i/articles/img-1.jpg" alt="Article image")
+		.publication-item__text
+			h3
+				a(href="#") Если ребенок выбил зуб
+			p Зачастую, если мы слышим «выбил зуб», то подразумеваем, что ребенок полностью или частично его лишился. На самом деле, травмы зубов бывают...
+			p.c-grey 27 ноября 2019 года
+
+mixin news-item
+	.publication-item
+		a(href="#").publication-item__img
+			picture._rounded
+				source(data-srcset="i/articles/img-1.webp 1x, i/articles/img-1@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/articles/img-1.jpg 1x, i/articles/img-1@2x.jpg 2x" type="image/jpg")
+				img.lazyload(data-src="i/articles/img-1.jpg" alt="Article image")
+		.publication-item__text
+			h3
+				a(href="#") Врачи клиники CrocoDent на международной выставке ДЕНТАЛ-ЭКСПО
+			p С 23 по 26 сентября в Москве проходит 46-й Московский международный стоматологический форум международная выставка ДЕНТАЛ-ЭКСПО 2019...
+			p.c-grey 27 ноября 2019 года
+
+mixin doctor-right-align
+	.form-panel
+		.center-holder.form-panel__center-holder
+			.form-panel__text
+				.valid-date.form-panel__valid-date
+					span.valid-date__text-xs до
+					span.valid-date__day 30
+					span.valid-day__month сентября
+				.form-panel__text-inner
+					h2.form-panel__title Запишитесь на #[span.c-primary бесплатную консультацию] в&nbsp;CrocoDent #[span.mobile-hidden по&nbsp;телефону]
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						+form-panel-inline
+			picture.form-panel__img._doctor._right-align
+				source(data-srcset="i/form-img/form-img-7-cropped.webp 1x, i/form-img/form-img-7-cropped@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/form-img/form-img-7-cropped.png 1x, i/form-img/form-img-7-cropped@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-7.png" alt="Image description")
+
+mixin doctor-left-align
+	.form-panel
+		.center-holder.form-panel__center-holder
+			picture.form-panel__img._doctor._left-align
+				source(data-srcset="i/form-img/form-img-8-cropped.webp 1x, i/form-img/form-img-8-cropped@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/form-img/form-img-8-cropped.png 1x, i/form-img/form-img-8-cropped@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-8-cropped.png" alt="Image description")
+			.form-panel__text
+				.form-panel__text-inner
+					h2.form-panel__title Запишитесь на #[span.c-primary бесплатную консультацию] в&nbsp;CrocoDent #[span.mobile-hidden по&nbsp;телефону]
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						+form-panel-inline
+
+mixin doctor-right-align-different-date
+	.form-panel
+		.center-holder.form-panel__center-holder
+			.form-panel__text
+				.valid-date.form-panel__valid-date.mobile-hidden
+					span.valid-date__text-lg Весь
+					span.valid-day__month сентябрь
+				.form-panel__text-inner
+					h2.form-panel__title.mobile-hidden #[span.c-primary Скидка 30%] на терапию, хирургию и гигиену
+					h2.form-panel__title.mobile-visible #[span.c-primary Запишитесь] на консультацию в CrocoDent
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						+form-panel-inline
+			picture.form-panel__img._doctor.mobile-hidden._right-align._fit-cover
+				source(data-srcset="i/form-img/form-img-9-cropped.webp 1x, i/form-img/form-img-9-cropped@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/form-img/form-img-9-cropped.png 1x, i/form-img/form-img-9-cropped@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-9-cropped.png" alt="Image description")
+
+mixin form-tomography
+	.form-panel._tomography-wrap
+		.center-holder.form-panel__center-holder
+			.form-panel__text
+				.valid-date.form-panel__valid-date
+					span.valid-date__text-xs до
+					span.valid-date__day 12
+					span.valid-day__month сентября
+				.form-panel__text-inner
+					h2.form-panel__title Панорамный снимок в #[span.c-primary подарок] всем записавшимся на&nbsp;приём
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						+form-panel-inline
+			picture.form-panel__img._tomography
+				source(data-srcset="i/form-img/form-img-1.webp 1x, i/form-img/form-img-1@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/form-img/form-img-1.png 1x, i/form-img/form-img-1@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-1.png" alt="Image description")
+
+mixin doctor-left-align-blured
+	.form-panel
+		.center-holder.form-panel__center-holder
+			picture.form-panel__img._doctor-blured
+				source(data-srcset="i/form-img/form-img-4.webp 1x, i/form-img/form-img-4@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/form-img/form-img-4.jpg 1x, i/form-img/form-img-4@2x.jpg 2x" type="image/jpg")
+				img.lazyload(data-src="i/form-img/form-img-4.jpg" alt="Image description")
+			.form-panel__text
+				.form-panel__text-inner
+					h2.form-panel__title #[span.c-primary Запишитесь] на приём в CrocoDent по телефону
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						+form-panel-inline
+
+mixin form-content-doctor-man-left-align
+	.form-panel._doctor-man-wrap
+		.content__section-inner.form-panel__section-inner
+			picture.form-panel__img._doctor-man._content-left-align
+				source(media="(min-width: 767px)" data-srcset="i/form-img/form-img-3.webp 1x, i/form-img/form-img-3@2x.webp 2x" type="image/webp")
+				source(media="(max-width: 767px)" data-srcset="i/form-img/form-img-3-sm.webp 1x, i/form-img/form-img-3-sm@2x.webp 2x" type="image/webp")
+				source(media="(min-width: 768px)" data-srcset="i/form-img/form-img-3.png 1x, i/form-img/form-img-3@2x.png 2x" type="image/png")
+				source(media="(max-width: 767px)" data-srcset="i/form-img/form-img-3-sm.png 1x, i/form-img/form-img-3-sm@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-3.png" alt="Image description")
+			.form-panel__text
+				.valid-date.form-panel__valid-date.content__valid-date
+					span.valid-date__text-xs до
+					span.valid-date__day 12
+					span.valid-day__month сентября
+				.form-panel__text-inner
+					h2.form-panel__title #[span.c-primary Запишитесь] на консультацию в CrocoDent по&nbsp;телефону
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						form.needs-validation.form-inline.content__form-inline(novalidate role="form")
+							.input-holder.form-inline__input-holder
+								input.form-control.phoneinput(type="text" required="required" inputmode="tel" placeholder="+7")
+							button.btn._primary.form__btn(type="submit")
+								span.btn__text #[span.mobile-hidden Перезвоните мне] #[span.mobile-visible Записаться]
+							p.form-text-agreement.c-grey.form-inline__form-text-agreement Нажимая кнопку «#[span.mobile-hidden Перезвоните мне]#[span.mobile-visible Записаться]» вы даёте #[a._grey(href="#") согласие на обработку своих данных]
+							.phone-note.form-panel__phone-note.form-inline__phone-note
+								p.text-sm.mb-0.c-grey Или позвоните нам:
+								a.tel-link(href="tel:+74951910824") +7 495 191-08-24
+								+icon('curve-2', 'phone-note__curve-2')
+
+mixin form-content-doctor-left-align
+	.form-panel._left-align-img
+		.content__section-inner.form-panel__section-inner
+			picture.form-panel__img._doctor._content-left-align
+				source(media="(min-width: 1240px)" data-srcset="i/form-img/form-img-6.webp 1x, i/form-img/form-img-6@2x.webp 2x" type="image/png")
+				source(media="(max-width: 1239px)" data-srcset="i/form-img/form-img-6-cropped.webp 1x, i/form-img/form-img-6-cropped@2x.webp 2x" type="image/png")
+				source(media="(min-width: 1240px)" data-srcset="i/form-img/form-img-6.png 1x, i/form-img/form-img-6@2x.png 2x" type="image/png")
+				source(media="(max-width: 1239px)" data-srcset="i/form-img/form-img-6-cropped.png 1x, i/form-img/form-img-6-cropped@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-6.png" alt="Image description")
+			.form-panel__text
+				.valid-date.form-panel__valid-date.content__valid-date
+					span.valid-date__text-xs до
+					span.valid-date__day 12
+					span.valid-day__month сентября
+				.form-panel__text-inner
+					h2.form-panel__title #[span.c-primary Запишитесь] на консультацию в CrocoDent по&nbsp;телефону
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						form.needs-validation.form-inline.content__form-inline(novalidate role="form")
+							.input-holder.form-inline__input-holder
+								input.form-control.phoneinput(type="text" required="required" inputmode="tel" placeholder="+7")
+							button.btn._primary.form__btn(type="submit")
+								span.btn__text #[span.mobile-hidden Перезвоните мне] #[span.mobile-visible Записаться]
+							p.form-text-agreement.c-grey.form-inline__form-text-agreement Нажимая кнопку «#[span.mobile-hidden Перезвоните мне]#[span.mobile-visible Записаться]» вы даёте #[a._grey(href="#") согласие на обработку своих данных]
+							.phone-note.form-panel__phone-note.form-inline__phone-note
+								p.text-sm.mb-0.c-grey Или позвоните нам:
+								a.tel-link(href="tel:+74951910824") +7 495 191-08-24
+								+icon('curve-2', 'phone-note__curve-2')
+
+mixin form-content-doctor-right-align
+	.form-panel
+		.content__section-inner.form-panel__section-inner._ai-min-lg-stretch._fw-max-lg-wrap
+			.form-panel__text
+				.form-panel__text-inner._pl-content-pl
+					h2.form-panel__title #[span.c-primary Запишитесь] на консультацию в CrocoDent
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						form.needs-validation.form-inline.content__form-inline(novalidate role="form")
+							.input-holder.form-inline__input-holder
+								input.form-control.phoneinput(type="text" required="required" inputmode="tel" placeholder="+7")
+							button.btn._primary.form__btn(type="submit")
+								span.btn__text #[span.mobile-hidden Перезвоните мне] #[span.mobile-visible Записаться]
+							p.form-text-agreement.c-grey.form-inline__form-text-agreement Нажимая кнопку «#[span.mobile-hidden Перезвоните мне]#[span.mobile-visible Записаться]» вы даёте #[a._grey(href="#") согласие на обработку своих данных]
+							.phone-note.form-panel__phone-note.form-inline__phone-note
+								p.text-sm.mb-0.c-grey Или позвоните нам:
+								a.tel-link(href="tel:+74951910824") +7 495 191-08-24
+								+icon('curve-2', 'phone-note__curve-2')
+			picture.form-panel__img._doctor._content-right-align
+				source(media="(min-width: 1240px)" data-srcset="i/form-img/form-img-7.webp 1x, i/form-img/form-img-7@2x.webp 2x" type="image/png")
+				source(media="(max-width: 1239px)" data-srcset="i/form-img/form-img-7-cropped.webp 1x, i/form-img/form-img-7-cropped@2x.webp 2x" type="image/png")
+				source(media="(min-width: 1240px)" data-srcset="i/form-img/form-img-7.png 1x, i/form-img/form-img-7@2x.png 2x" type="image/png")
+				source(media="(max-width: 1239px)" data-srcset="i/form-img/form-img-7-cropped.png 1x, i/form-img/form-img-7-cropped@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/form-img/form-img-7.png" alt="Image description")
+
+mixin microscope-right-align
+	.form-panel
+		.content__section-inner.form-panel__section-inner._ai-min-lg-stretch
+			.form-panel__text
+				.form-panel__text-inner._pl-content-pl
+					h2.form-panel__title #[span.c-primary Скидка 30% до конца сентября] на лечение зубов под микроскопом
+					p.lead.form-panel__lead Укажите свой номер телефона, мы перезвоним и&nbsp;подберём для вас удобное время приёма
+					.form-wrap._inline.form-panel__form-wrap
+						form.needs-validation.form-inline.content__form-inline(novalidate role="form")
+							.input-holder.form-inline__input-holder
+								input.form-control.phoneinput(type="text" required="required" inputmode="tel" placeholder="+7")
+							button.btn._primary.form__btn(type="submit")
+								span.btn__text #[span.mobile-hidden Перезвоните мне] #[span.mobile-visible Записаться]
+							p.form-text-agreement.c-grey.form-inline__form-text-agreement Нажимая кнопку «#[span.mobile-hidden Перезвоните мне]#[span.mobile-visible Записаться]» вы даёте #[a._grey(href="#") согласие на обработку своих данных]
+							.phone-note.form-panel__phone-note.form-inline__phone-note
+								p.text-sm.mb-0.c-grey Или позвоните нам:
+								a.tel-link(href="tel:+74951910824") +7 495 191-08-24
+								+icon('curve-2', 'phone-note__curve-2')
+			picture.form-panel__img._fixed-top.mobile-hidden
+				source(data-srcset="i/equipment/img-9.webp 1x, i/equipment/img-9@2x.webp 2x" type="image/webp")
+				source(data-srcset="i/equipment/img-9.png 1x, i/equipment/img-9@2x.png 2x" type="image/png")
+				img.lazyload(data-src="i/equipment/img-9.png" alt="Image description")
+
+mixin message-item
+	.message
+		p.message__body Были с ребёнком у стоматолога Нефедовой Татьяне Алексеевне на профессиональной чистке зубов. Ребёнок, а тем более родители остались очень довольны, всё понравилось, объяснит, расскажет, покажет. Общие впечатления от клиники положительные, чисто, красиво. Даже подарочек ребёнок получил. Спасибо за беленькие зубки.
+		.message__footer
+			span.c-grey.mr-1 Анна оставила отзыв на
+			a.mr-1(href="#") zoon
+			span.mr-1 05 августа 2019 года

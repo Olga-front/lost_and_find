@@ -1,0 +1,155 @@
+.card-label {
+    background-color: rgba(#3e6b9d, 0.2);
+    color: #fff;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: top;
+    padding: rem(3) rem(12);
+    margin: 0 0 rem(9);
+}
+
+.card {
+    .item-detail-carousel {
+        height: rem(200);
+    }
+
+    .flickity-viewport {
+        height: 100% !important;
+    }
+}
+
+.card-title {
+    width: 100%;
+
+}
+
+.card-text {
+    width: 100%;
+}
+
+.card-body {
+    &:hover {
+        .card-hover {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.card-hover {
+    transition: .3s ease all;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: rem(200);
+    background: rgba($link-color, 0.3);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@include media-breakpoint-up(lg) {
+    .card-inline {
+        .card-hover {
+            display: inline-flex;
+            align-items: flex-start;
+            padding-left: rem(10);
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .card-inline {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: rem(30);
+
+        .item-detail-carousel {
+            width: rem(200);
+            min-width: rem(200);
+            max-width: rem(200);
+            height: rem(140);
+        }
+
+        .card-hover {
+            height: auto;
+            width: auto;
+            position: static;
+            background: transparent;
+            justify-content: flex-start;
+
+            .btn {
+                padding: rem(5) rem(10) rem(5);
+                font-size: rem(13);
+            }
+        }
+
+        .card-body {
+            padding: 0 0 0 rem(30);
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .card-inline {
+        .card-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card-label {
+            order: 1;
+        }
+
+        .card-title {
+            order: 2;
+        }
+
+        .card-text {
+            order: 3;
+        }
+
+        .card-hover {
+            order: 4;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .card {
+        .item-detail-carousel {
+            height: 60vw;
+            margin: 0 rem(-20);
+            width: calc(100% + #{rem(40)});
+        }
+    }
+
+    .card-hover {
+        position: static;
+        background: none;
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        display: inline-grid;
+
+        .btn {
+            width: 100%;
+            max-width: rem(180);
+            margin-bottom: rem(10);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .card-body {
+        padding-bottom: rem(40);
+    }
+}

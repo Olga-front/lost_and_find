@@ -1,0 +1,40 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find'};
+	- var header_class = 'navbar-dark';
+block content_block
+
+	section.s-intro.p-0.text-white
+		.jarallax.s-intro-jarallax(data-jarallax data-speed="0.2")
+			img.jarallax-img(src="i/registration/intro-bg.jpg")
+			.container-fluid.s-intro-content.mw-md-1100
+				h1 Register your items before it is too late.
+				p.mb-1 Register your goods before you lose it.
+				p On average people lose something once a year.
+	.container-fluid.mw-md-1100
+		section.no-bg
+			.row
+				.col-md-4.wow.slideInLeft
+					h2 Register
+				.col-md-8.wow.slideInRight
+					p.mb-5 Sign up for the Deployment Matters partner to discover the extensive line of benefits
+					form.needs-validation(novalidate)
+						.form-group.label-absolute-wrap
+							input.form-control.form-control-border-botttom(type="text" class="form-control" id="name" required)
+							label.label-absolute(for="name") Your name
+						.form-group.mb-4
+							input.form-control.form-control-border-botttom(type="email" class="form-control" id="email" required)
+							label.label-absolute(for="email") Email address
+						.custom-control.custom-checkbox.mb-5
+							input(type="checkbox" class="custom-control-input" id="termsAndConditionChkbox" required)
+							label.custom-control-label(for="termsAndConditionChkbox") I am agree with General some text with link en #[a.link-body-color(href="#") more links and long links] of Terms and Conditions of ilost.nl 
+						button(type="submit" class="btn btn-dark") REGISTER NOW
+		section.no-bg
+			.row
+				.col-md-4.wow.slideInLeft
+					h2 Another text
+				.col-md-8.wow.slideInRight
+					p Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sapiente necessitatibus dolorum #[a.link-body-color(href="#") doloribus cumque ab officiis] laborum quae aliquid aliquam cupiditate placeat, porro distinctio iste quod adipisci ipsa ipsum beatae!

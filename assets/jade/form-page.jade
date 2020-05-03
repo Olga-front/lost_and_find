@@ -1,0 +1,44 @@
+extends _layout
+include templates/_global-mixins
+include templates/_project-mixins
+include templates/_project-vars
+block vars
+	- var array = {title_inner:'Lost and Find', header_login: true};
+	- var header_class = 'navbar-dark';
+block content_block
+
+	section.s-intro.p-0.text-white
+		.jarallax.s-intro-jarallax(data-jarallax data-speed="0.2")
+			img.jarallax-img(src="i/form-page/intro-bg.jpg")
+			.container-fluid.s-intro-content.mw-md-1100
+				h1 Good morning Surya!
+				p.mb-1 Register your goods before you lose it.
+				p On average people lose something once a year.
+				div.mt-5
+					button(type="button" class="btn btn-primary mr-sm-4 mb-3 mb-sm-0") register a new item
+					button(type="button" class="btn btn-danger") i've found an item
+	.container-fluid.mw-md-1100
+		section.no-bg
+			.row
+				.col-md-4.wow.slideInLeft
+					h2 Register
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+				.col-md-8.wow.slideInRight
+					p.mb-5 Sign up for the Deployment Matters partner to discover the extensive line of benefits
+					form.needs-validation(novalidate)
+						.form-group.label-absolute-wrap
+							input.form-control.form-control-border-botttom(type="text" class="form-control" id="name" required)
+							label.label-absolute(for="name") Your name
+						.form-group.mb-4
+							input.form-control.form-control-border-botttom(type="email" class="form-control" id="email" required)
+							label.label-absolute(for="email") Create your unique ID #[span.text-muted (AB-CB-AB-01)]:
+						.custom-control.custom-radio.mb-3
+							input(type="radio" id="customRadio1" name="test-radio" class="custom-control-input" required)
+							label.custom-control-label(for="customRadio1") I am agree with General some text with link en #[a.link-body-color(href="#") more links and long links] of Terms and Conditions of ilost.nl 
+						.custom-control.custom-radio.mb-4
+							input(type="radio" id="customRadio2" name="test-radio" class="custom-control-input" required)
+							label.custom-control-label(for="customRadio2") Custom radio
+						.custom-img-file.mb-4
+							input(type="file" accept=".jpg, .jpeg, .png" class="custom-file-input" id="lostItemImages" name="files[]" multiple)
+							label(class="custom-img-file-label btn" for="lostItemImages") Upload your images
+						button(type="submit" class="btn btn-dark") REGISTER NOW

@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+    max-height: 1000000px;
+}
+
+html {
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: none;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+    min-width: 320px;
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+a {
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+img {
+    border-style: none;
+    vertical-align: top;
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    @include transition();
+}
+
+strong {
+    font-weight: 600;
+}
+
+input,
+textarea,
+select {
+    border-radius: 0;
+    vertical-align: middle;
+}
+
+form,
+fieldset {
+    margin: 0;
+    padding: 0;
+    border-style: none;
+}
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+
+    &:active,
+    &:focus {
+        outline: none !important;
+    }
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+    &:focus {
+        outline: none;
+    }
+}
+
+input[type=text],
+input[type=password],
+input[type=file],
+input[type=submit],
+input[type=search],
+input[type=email],
+input[type="tel"],
+input[type="url"],
+textarea {
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+    vertical-align: top;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    padding: 0;
+}
+
+q {
+    quotes: none;
+
+    &:before,
+    &:after {
+        content: '';
+        content: none;
+    }
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input[type="time"],
+input[type="date"],
+input[type="text"] {
+    &::-ms-clear {
+        display: none;
+    }
+}
+
+input[type="date"],
+input[type="time"] {
+    -webkit-appearance: none;
+    padding-top: 1.6em;
+    padding-bottom: 1.6em;
+
+    &::-webkit-clear-button {
+        display: none;
+    }
+
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+}
+
+address {
+    font-style: normal;
+}

@@ -1,0 +1,22 @@
+.s-partners {
+    padding: rem(36) 0;
+}
+
+.s-partners-carousel {
+    .carousel-cell {
+        width: 300px;
+        padding: 0 rem(30);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+@include media-breakpoint-down(sm) {
+
+    .s-partners-carousel {
+        .carousel-cell {
+            width: 50%;
+        }
+    }
+
+}

@@ -1,0 +1,21 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.main {
+    padding-top: rem(119);
+}
+
+.container-fluid {
+    max-width: rem(1240);
+    padding: 0 rem(20);
+}
+
+@include media-breakpoint-down(sm) {
+    .main {
+        padding-top: rem(62);
+    }
+}

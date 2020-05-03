@@ -1,0 +1,106 @@
+.s-principles {
+    background: #2d3845 url(/i/home/principles-bg.jpg);
+    color: $white;
+    padding-bottom: rem(40);
+}
+
+.s-principles-img-book {
+    max-width: rem(353);
+    transform: rotate(46deg);
+    margin: rem(-30) 0 0 rem(30);
+}
+
+.s-principles-tab-content {
+    width: calc(100% - 300px);
+    padding-right: 60px;
+}
+
+.s-principles-nav {
+    width: 300px;
+    counter-reset: counter;
+
+    &>li {
+        counter-increment: counter;
+        width: 100%;
+        margin-bottom: 10px;
+
+        &:first-child {
+            .nav-link {
+                padding-top: 0;
+            }
+        }
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: flex-end;
+        font-weight: 300;
+        color: $gray-600;
+        width: 100%;
+        border-bottom: 2px solid $gray-600;
+        padding: rem(45) 0 rem(45);
+
+        &:before {
+            content: counter(counter);
+            font-size: rem(60);
+            margin-right: rem(11);
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        &.active {
+            color: #fff;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .s-principles-tab-content {
+        order: 2;
+        width: 100%;
+        padding: 0;
+    }
+
+    .s-principles-nav {
+        order: 1;
+        width: calc(100% + #{rem(40)});
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        font-size: rem(13);
+        margin: 0 rem(-20) rem(20);
+
+        &>li {
+            width: auto;
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+
+            &:first-child {
+                .nav-link {
+                    padding: 0 0 rem(15) rem(15);
+                }
+            }
+
+            &:last-child {
+                .nav-link {
+                    padding: 0 rem(15) rem(15) 0;
+                }
+            }
+        }
+
+        .nav-link {
+            padding: 0 rem(5) rem(15);
+
+            &:before {
+                font-size: rem(36);
+                margin-right: rem(5);
+            }
+        }
+    }
+
+    .s-principles-img-book {
+        max-width: 90%;
+        margin: 0;
+    }
+}

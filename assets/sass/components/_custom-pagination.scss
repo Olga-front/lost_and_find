@@ -1,0 +1,45 @@
+.pagination {
+    margin-bottom: 0;
+    padding-top: rem(20);
+
+    li:first-child,
+    li:last-child {
+        flex-grow: 1;
+
+        .page-link {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    li {
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+}
+
+.page-link {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+
+    &:after {
+        transition: .3s ease all;
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        height: 1px;
+        width: 1px;
+        background-color: transparent;
+    }
+
+    &:hover {
+        &:after {
+            width: 100%;
+            background-color: $body-color;
+        }
+    }
+}

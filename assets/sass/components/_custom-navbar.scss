@@ -1,0 +1,432 @@
+.navbar {
+    transition: .3s ease all;
+    width: 100%;
+    background-color: transparent;
+    padding: rem(17) rem(20) rem(12);
+
+    &.sticky {
+        padding-top: rem(12);
+        padding-bottom: rem(10);
+
+        .navbar-brand {
+            padding-top: 0;
+            padding-bottom: 0;
+
+            svg {
+                width: rem(46);
+                height: rem(50);
+            }
+        }
+
+        .admin-bar {
+            margin-bottom: rem(1);
+        }
+
+        .profile-dropdown {
+            .dropdown-menu {
+                background-color: $gray-500;
+            }   
+        }
+    }
+}
+
+.navbar-brand {
+    svg {
+        transition: .3s ease all;
+        width: rem(76);
+        height: rem(80);
+    }
+}
+
+.admin-bar {
+    transition: .3s ease all;
+    margin-bottom: rem(11);
+    font-size: rem(14);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.admin-links {
+    @include reset-ul;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav {
+    font-weight: 600;
+    margin-right: -1rem;
+}
+
+.nav-item {
+    &.dropdown {
+        position: static;
+    }
+}
+
+.navbar-dark {
+    color: $white;
+
+    a:not(.dropdown-item) {
+        @include link-color($white, rgba($white, 0.8), none);
+        text-decoration: none;
+    }
+
+    .admin-links {
+        a {
+            color: $white;
+        }
+    }
+
+    .dropdown-toggle {
+        &:after {
+            @include arrow(bottom, $white, .3rem, .1rem);
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                border-right-color: rgba($white, 0.8);
+                border-bottom-color: rgba($white, 0.8);
+            }
+        }
+    }
+
+    &.bg-primary {
+        .nav-dropdown-menu {
+            background-color: $link-color;
+        }
+    }
+}
+
+.navbar-light {
+    color: $body-color;
+
+    a:not(.dropdown-item) {
+        @include link-color($body-color, $link-color, none);
+        text-decoration: none;
+    }
+
+    .admin-links {
+        a {
+            color: $body-color;
+
+            &:hover,
+            &:focus {
+                color: $link-color;
+            }
+        }
+    }
+
+    .navbar-brand {
+        svg {
+            color: $body-color;
+
+            &:hover,
+            &:focus {
+                color: $link-color;
+            }
+        }
+    }
+
+    .dropdown-toggle {
+        &:after {
+            @include arrow(bottom, $body-color, .3rem, .1rem);
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                border-right-color: rgba($link-color, 0.8);
+                border-bottom-color: rgba($link-color, 0.8);
+            }
+        }
+    }
+}
+
+.navbar-dark,
+.navbar-light {
+    &.sticky {
+        background-color: $primary;
+        color: $white;
+
+        .nav-dropdown-menu {
+            background-color: $primary;
+        }
+
+        a:not(.dropdown-item) {
+            @include link-color($white, rgba($white, 0.8), none);
+        }
+
+        .admin-links {
+            a {
+                color: $white;
+
+                &:hover,
+                &:focus {
+                    color: rgba($white, 0.8);
+                }
+            }
+        }
+
+        .navbar-brand {
+            svg {
+                color: $white;
+
+                &:hover,
+                &:focus {
+                    color: rgba($white, 0.8);
+                }
+            }
+        }
+
+        .dropdown-toggle {
+            &:after {
+                @include arrow(bottom, $white, .3rem, .1rem);
+            }
+
+            &:hover,
+            &:focus {
+                &:after {
+                    border-right-color: rgba($white, 0.8);
+                    border-bottom-color: rgba($white, 0.8);
+                }
+            }
+        }
+    }
+}
+
+.navbar-brand {
+    img {
+        transition: .3s ease all;
+    }
+}
+
+.lang-dropdown {
+    position: relative;
+
+
+    .dropdown-menu {
+        min-width: rem(120);
+    }
+
+    .dropdown-item {
+        color: $body-color;
+        font-size: rem(14);
+        padding: rem(4) rem(10);
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+.profile-dropdown {
+    position: static;
+}
+
+.dropdown-toggle,
+a[data-toggle=dropdown] {
+
+    span,
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &:after {
+        vertical-align: middle;
+    }
+}
+
+.lang-dropdown {
+    &>a {
+        img {
+            max-width: rem(16);
+        }
+    }
+}
+
+.profile-dropdown-avatar {
+    min-width: rem(40);
+    max-width: rem(40);
+    height: rem(40);
+    border-radius: 50%;
+    margin-right: rem(8);
+}
+
+@include media-breakpoint-up(md) {
+    .navbar {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .navbar {
+        padding-top: rem(7);
+        padding-bottom: rem(7);
+        border-bottom: 1px solid rgba($white, 0.2);
+        background-color: rgba($primary, 1);
+
+        &.sticky {
+            padding-top: rem(7);
+            padding-bottom: rem(7);
+
+            .navbar-brand {
+
+                svg {
+                    width: rem(36);
+                    height: rem(40);
+                }
+            }
+
+            .admin-bar {
+                margin-bottom: rem(5);
+            }
+
+            .profile-dropdown {
+                .dropdown-menu {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    .admin-links {
+        width: 100%;
+        padding-right: rem(10);
+        font-size: rem(14);
+    }
+
+    .admin-bar {
+        margin-bottom: rem(5);
+        display: block;
+    }
+
+    .navbar-brand {
+        svg {
+            width: rem(36);
+            height: rem(40);
+        }
+    }
+
+    .navbar-toggler {
+        border: none;
+        margin-right: -.75rem;
+        width: rem(33);
+        height: rem(24);
+        position: relative;
+        padding: rem(3);
+    }
+
+    .navbar-toggler-icon {
+        position: absolute;
+        top: rem(3);
+        left: rem(3);
+        right: rem(3);
+        height: rem(2);
+        width: rem(20);
+        background-color: $white;
+        background-image: none !important;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            height: rem(2);
+            left: 0;
+            width: 100%;
+            background-color: $white;
+        }
+
+        &:before {
+            top: rem(8);
+        }
+
+        &:after {
+            top: rem(16);
+        }
+    }
+
+    .navbar-light {
+        color: $white;
+
+        a:not(.dropdown-item) {
+            @include link-color($white, rgba($white, 0.9), none);
+            text-decoration: none;
+        }
+
+        .admin-links {
+            a {
+                color: $white;
+
+                &:hover,
+                &:focus {
+                    color: rgba($white, 0.9);
+                }
+            }
+        }
+
+        .navbar-brand {
+            svg {
+                color: $white;
+
+                &:hover,
+                &:focus {
+                    color: rgba($white, 0.9);
+                }
+            }
+        }
+
+        .dropdown-toggle {
+            &:after {
+                @include arrow(bottom, $white, .3rem, .1rem);
+            }
+
+            &:hover,
+            &:focus {
+                &:after {
+                    border-right-color: rgba($white, 0.8);
+                    border-bottom-color: rgba($white, 0.8);
+                }
+            }
+        }
+    }
+
+    .navbar-top-area {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav {
+        padding-bottom: rem(15);
+    }
+
+    .nav-item {
+        width: 100%;
+        padding: rem(5) 0;
+    }
+
+    .nav-link {
+        padding: 0;
+    }
+
+    .profile-dropdown,
+    .lang-dropdown {
+        margin-bottom: rem(10);
+    }
+
+    .profile-dropdown {
+        .dropdown-menu {
+            background-color: transparent;
+        }
+
+        .nav-dropdown-container {
+            padding-left: rem(48);
+        }
+    }
+}

@@ -1,0 +1,305 @@
+@mixin font_face($file_name, $font_name:$file_name, $path:$font_path, $weight:normal, $style:normal) {
+    @font-face {
+        font-family: quote($font_name);
+        src: url($path + $file-name + ".woff") format("woff");
+        font-weight: $weight;
+        font-style: $style;
+        font-display: swap;
+    }
+}
+
+@mixin triangle($side, $color, $size) {
+    @if $side==left {
+        border: $size solid transparent;
+        border-right: $size solid $color;
+    }
+
+    @if $side==right {
+        border: $size solid transparent;
+        border-left: $size solid $color;
+    }
+
+    @if $side==top {
+        border: $size solid transparent;
+        border-bottom: $size solid $color;
+    }
+
+    @if $side==bottom {
+        border: $size solid transparent;
+        border-top: $size solid $color;
+    }
+}
+
+@mixin triangle_narrow($side, $color, $size) {
+    $narrow_size: $size/2;
+
+    @if $side==left {
+        border: $narrow_size solid transparent;
+        border-right: $size solid $color;
+    }
+
+    @if $side==right {
+        border: $narrow_size solid transparent;
+        border-left: $size solid $color;
+    }
+
+    @if $side==top {
+        border: $narrow_size solid transparent;
+        border-bottom: $size solid $color;
+    }
+
+    @if $side==bottom {
+        border: $narrow_size solid transparent;
+        border-top: $size solid $color;
+    }
+}
+
+@mixin arrow($direction, $color:#000, $width:1rem, $arrow_width:.1rem) {
+    width: $width;
+    height: $width;
+    transform: rotate(45deg);
+
+    @if $direction==right {
+        border-top: $arrow_width solid $color;
+        border-right: $arrow_width solid $color;
+        border-bottom: 0;
+        border-left: 0;
+    }
+
+    @if $direction==bottom {
+        border-right: $arrow_width solid $color;
+        border-bottom: $arrow_width solid $color;
+        border-top: 0;
+        border-left: 0;
+    }
+
+    @if $direction==left {
+        border-bottom: $arrow_width solid $color;
+        border-left: $arrow_width solid $color;
+        border-top: 0;
+        border-right: 0;
+    }
+
+    @if $direction==top {
+        border-left: $arrow_width solid $color;
+        border-top: $arrow_width solid $color;
+        border-bottom: 0;
+        border-right: 0;
+    }
+}
+
+@mixin appearance($value: button) {
+    appearance: $value;
+}
+
+@mixin flex_block($flex-direction : row, $flex-wrap: wrap, $content : space-between, $align-items : flex-start, $align-content : flex-start) {
+
+    display: flex;
+    flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
+    justify-content: $content;
+    align-content: $align-content;
+    align-items: $align-items;
+}
+
+@mixin inline_block_wrapper {
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: -1px;
+}
+
+@mixin overlay($color) {
+    position: relative;
+    z-index: 0;
+
+    &:before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 10000px;
+        margin-left: -5000px;
+        background: $color;
+    }
+}
+
+@mixin visually_hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+// clearfix
+@mixin clearfix {
+    &:after {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+}
+
+// reset for list
+@mixin reset-ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin inline-block-reset {
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: -4px;
+}
+
+@mixin v-align($child-class-name, $m-height: 0, $valign: middle) {
+    white-space: nowrap;
+
+    &:after {
+        content: '';
+        vertical-align: $valign;
+        display: inline-block;
+        min-height: $m-height;
+    }
+}
+
+// hide text
+@mixin hide-text {
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+// some CSS3 style
+@mixin css3($property, $value) {
+
+    @each $prefix in -webkit-,
+    -moz-,
+    '' {
+        #{$prefix}#{$property}: $value;
+    }
+}
+
+//full width
+@mixin full-width {
+    padding-left: 9999px;
+    padding-right: 9999px;
+    margin-left: -9999px;
+    margin-right: -9999px;
+}
+
+// transition
+@mixin transition ($type:all, $time:0.2s, $ease:ease-out) {
+    transition: $type $time $ease;
+}
+
+@mixin font-size ($sizeValue) {
+    font-size: $sizeValue + px;
+    font-size: ($sizeValue / 10) + rem;
+}
+
+@mixin arrow-lazy($al-direction: top, $al-size: 10px, $al-color: #ccc, $al-center: 50%, $al-margin: -1px, $al-pseudo: before) {
+    position: relative;
+    border-color: $al-color;
+
+    &:#{$al-pseudo} {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-color: $al-color;
+
+        @if $al-direction=="right" {
+            top: $al-center;
+            left: 100%;
+            margin-left: $al-margin;
+            margin-top: $al-size * -1;
+            border-top: $al-size solid transparent;
+            border-bottom: $al-size solid transparent;
+            border-left: $al-size solid $al-color;
+            border-left-color: inherit;
+        }
+
+        @else if $al-direction=="down" {
+            top: 100%;
+            left: $al-center;
+            margin-top: $al-margin;
+            margin-left: $al-size * -1;
+            border-left: $al-size solid transparent;
+            border-right: $al-size solid transparent;
+            border-top: $al-size solid $al-color;
+            border-top-color: inherit;
+        }
+
+        @else if $al-direction=="left" {
+            top: $al-center;
+            right: 100%;
+            margin-right: $al-margin;
+            margin-top: $al-size * -1;
+            border-top: $al-size solid transparent;
+            border-bottom: $al-size solid transparent;
+            border-right: $al-size solid $al-color;
+            border-right-color: inherit;
+        }
+
+        @else {
+            bottom: 100%;
+            left: $al-center;
+            margin-bottom: $al-margin;
+            margin-left: $al-size * -1;
+            border-left: $al-size solid transparent;
+            border-right: $al-size solid transparent;
+            border-bottom: $al-size solid $al-color;
+            border-bottom-color: inherit;
+        }
+    }
+}
+
+@mixin gradient-opacity {
+    @include transition(all, 0.4s, ease-out);
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+
+@mixin gradient-opacity-hover {
+    @include transition(all, 0.4s, ease-in);
+    opacity: 1;
+}
+
+@mixin beveled-corners($bg, $tl:0, $tr:$tl, $br:$tl, $bl:$tr) {
+    background: $bg;
+    background: linear-gradient(135deg, transparent $tl, $bg 0) top left,
+        linear-gradient(225deg, transparent $tr, $bg 0) top right,
+        linear-gradient(-45deg, transparent $br, $bg 0) bottom right,
+        linear-gradient(45deg, transparent $bl, $bg 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+@mixin icon {
+    display: inline-block;
+    vertical-align: top;
+    fill: currentColor;
+}
+
+@mixin link-color($color, $hover-color, $style) {
+    color: $color;
+    border-bottom: 1px $style rgba($color, 0.2);
+
+    &:hover,
+    &:focus {
+        color: $hover-color;
+        border-bottom-color: $hover-color;
+    }
+}

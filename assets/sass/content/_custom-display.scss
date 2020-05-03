@@ -1,0 +1,11 @@
+@include media-breakpoint-up(md) {
+    .visible-max-sm {
+        display: none !important;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
