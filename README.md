@@ -29,6 +29,6 @@ Create all your main scripts in assets/js. Create all your additional scripts (j
 ## How to make svg-sprite
 
 1. Put your icons into "assests/i/icons" folder
-3. Run task svgSpriteBuild
-4. Now you have sprite.svg in assets/i/sprite folder. By default you have svg4everybody script in your js. Also you have scss file _sprite.scss for styling sprite.
-5. Run svg4everybody in your main.js file. For including icons use jade mixin "icon"
+2. Run task svgSpriteBuild
+3. Now you have sprite.svg in assets/i/sprite folder. By default you have svg4everybody script in your js. Also you have scss file _sprite.scss for styling sprite.
+4. Run svg4everybody in your main.js file. For including icons use jade mixin "icon"
