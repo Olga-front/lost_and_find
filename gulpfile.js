@@ -6,23 +6,22 @@ const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const dirSync = require('gulp-directory-sync');
 const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
-const assets = require('postcss-assets');
+const gutil = require('gulp-util');
+const webp = require('gulp-webp');
 const autoprefixer = require('autoprefixer');
-const rigger = require('gulp-rigger');
+const terser = require('gulp-terser');
 
 // plugins for build
-const uglify = require('gulp-uglify');
-const csso = require('gulp-csso');
+const cssnano = require("cssnano");
 
 const assetsDir = 'assets/';
 const outputDir = 'dist/';
 const buildDir = 'build/';
 
 //----------------------------------------------------Compiling
-
-
 gulp.task('jade', function () {
 	return gulp.src([assetsDir + 'jade/*.jade', '!' + assetsDir + 'jade/_*.jade'])
 		.pipe(plumber())
@@ -32,24 +31,21 @@ gulp.task('jade', function () {
 
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', () => {
 	return gulp.src([assetsDir + 'sass/**/*.scss', '!' + assetsDir + 'sass/**/_*.scss'])
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sass())
-		.pipe(postcss([assets({
-			basePath: outputDir,
-			loadPaths: ['i/'],
-		})]))
-		.pipe(sourcemaps.write())
+		.on("error", sass.logError)
+		.pipe(postcss([autoprefixer()]))
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(outputDir + 'styles/'))
 		.pipe(browserSync.stream());
 });
 
-gulp.task('rigger', function () {
-	return gulp.src(assetsDir + 'js/all.js')
-		.pipe(plumber())
-		.pipe(rigger())
+gulp.task('jsConcat', function () {
+	return gulp.src(assetsDir + 'js/all/**/*.js')
+		.pipe(concat('all.js', { newLine: ';' }))
 		.pipe(gulp.dest(outputDir + 'js/'))
 		.pipe(browserSync.stream());
 });
@@ -64,6 +60,13 @@ gulp.task('imageSync', function () {
 		.pipe(browserSync.stream());
 });
 
+gulp.task("webp", function () {
+	return gulp.src(assetsDir + "i/**/*.{png,jpg,jpeg}")
+		.pipe(webp())
+		.pipe(gulp.dest(outputDir + 'i/'))
+		.pipe(browserSync.stream());
+});
+
 gulp.task('fontsSync', function () {
 	return gulp.src(assetsDir + 'fonts/')
 		.pipe(plumber())
@@ -72,7 +75,7 @@ gulp.task('fontsSync', function () {
 });
 
 gulp.task('jsSync', function () {
-	return gulp.src([assetsDir + 'js/*.js', '!' + assetsDir + 'js/all.js'])
+	return gulp.src(assetsDir + 'js/*.js')
 		.pipe(plumber())
 		.pipe(gulp.dest(outputDir + 'js/'))
 		.pipe(browserSync.stream());
@@ -86,7 +89,7 @@ gulp.task('watchFiles', function () {
 	gulp.watch(assetsDir + 'jade/**/*.jade', gulp.series('jade'));
 	gulp.watch((assetsDir + 'sass/**/*.scss'), gulp.series('sass'));
 	gulp.watch(assetsDir + 'js/**/*.js', gulp.series('jsSync'));
-	gulp.watch(assetsDir + 'js/all.js', gulp.series('rigger'));
+	gulp.watch(assetsDir + 'js/all/**/*.js', gulp.series('jsConcat'));
 	gulp.watch(assetsDir + 'fonts/**/*', gulp.series('fontsSync'));
 	gulp.watch(assetsDir + "i/**/*", gulp.series('imageSync'));
 });
@@ -127,10 +130,9 @@ gulp.task('htmlBuild', function () {
 
 // minify js
 gulp.task('jsBuild', function () {
-	return gulp.src([outputDir + 'js/**/*'])
-		.pipe(uglify().on('error', function (e) {
-			console.log(e);
-		}))
+	return gulp.src([outputDir + 'js/**/*', '!' + outputDir + 'js/**/fotorama.js'])
+		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+		.pipe(terser())
 		.pipe(gulp.dest(buildDir + 'js/'))
 });
 
@@ -142,11 +144,11 @@ gulp.task('jsFotoramaBuild', function () {
 
 //copy, minify css
 gulp.task('cssBuild', function () {
-	return gulp.src(outputDir + 'styles/**/*')
-		.pipe(postcss([autoprefixer()]))
-		.pipe(csso())
+	return gulp.src(outputDir + 'styles/**/*.css')
+		.pipe(postcss([cssnano()]))
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
+
 
 //--------------------------------------------If you need svg sprite
 var svgSprite = require('gulp-svg-sprite'),
@@ -192,9 +194,36 @@ gulp.task('svgSpriteBuild', function () {
 		.pipe(gulp.dest(outputDir + 'i/sprite/'));
 });
 
+gulp.task('svgMulticolorSpriteBuild', function () {
+	return gulp.src(assetsDir + 'i/multicolor-icons/*.svg')
+		// minify svg
+		.pipe(svgmin({
+			js2svg: {
+				pretty: true
+			}
+		}))
+		// cheerio plugin create unnecessary string '&gt;', so replace it.
+		.pipe(replace('&gt;', '>'))
+		// build svg sprite
+		.pipe(svgSprite({
+			mode: {
+				symbol: {
+					sprite: "../multicolor-sprite.svg",
+					render: {
+						scss: {
+							dest: '../../../sass/_multicolor-sprite.scss',
+							template: assetsDir + "sass/templates/_sprite_template.scss"
+						}
+					}
+				}
+			}
+		}))
+		.pipe(gulp.dest(outputDir + 'i/multicolor-sprite/'));
+});
+
 
 gulp.task('watch', gulp.parallel('watchFiles', 'browser-sync', 'imageSync'));
 
-gulp.task('default', gulp.series('jade', 'rigger', 'sass', 'fontsSync', 'jsSync', 'watch', 'imageSync'));
+gulp.task('default', gulp.series('jade', 'sass', 'fontsSync', 'jsConcat', 'jsSync', 'watch', 'imageSync'));
 
 gulp.task('build', gulp.series('cleanBuildDir', 'imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'jsFotoramaBuild', 'cssBuild'));
